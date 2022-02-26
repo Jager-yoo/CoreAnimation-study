@@ -13,6 +13,7 @@
 		C163C01327CA32F800E7E622 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163C01127CA32F800E7E622 /* Main.storyboard */; };
 		C163C01527CA32FA00E7E622 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C163C01427CA32FA00E7E622 /* Assets.xcassets */; };
 		C163C01827CA32FA00E7E622 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C163C01627CA32FA00E7E622 /* LaunchScreen.storyboard */; };
+		C163C02027CA338C00E7E622 /* CokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C01F27CA338C00E7E622 /* CokeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C163C01427CA32FA00E7E622 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C163C01727CA32FA00E7E622 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C163C01927CA32FA00E7E622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C163C01F27CA338C00E7E622 /* CokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CokeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +58,10 @@
 		C163C00A27CA32F800E7E622 /* LayerBasedAnimationStudy */ = {
 			isa = PBXGroup;
 			children = (
+				C163C01F27CA338C00E7E622 /* CokeView.swift */,
+				C163C00F27CA32F800E7E622 /* ViewController.swift */,
 				C163C00B27CA32F800E7E622 /* AppDelegate.swift */,
 				C163C00D27CA32F800E7E622 /* SceneDelegate.swift */,
-				C163C00F27CA32F800E7E622 /* ViewController.swift */,
 				C163C01127CA32F800E7E622 /* Main.storyboard */,
 				C163C01427CA32FA00E7E622 /* Assets.xcassets */,
 				C163C01627CA32FA00E7E622 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				C163C01027CA32F800E7E622 /* ViewController.swift in Sources */,
 				C163C00C27CA32F800E7E622 /* AppDelegate.swift in Sources */,
+				C163C02027CA338C00E7E622 /* CokeView.swift in Sources */,
 				C163C00E27CA32F800E7E622 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
