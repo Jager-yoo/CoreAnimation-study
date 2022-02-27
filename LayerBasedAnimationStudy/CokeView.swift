@@ -12,12 +12,13 @@ final class CokeView: UIView {
     lazy var width = bounds.width
     lazy var height = bounds.height
     
+    // MARK: - 컵
+    
     lazy var bottlePath: UIBezierPath = {
         let path = UIBezierPath()
         path.move(to: CGPoint(x: width * 0.1, y: height * 0.3))
         path.addLine(to: CGPoint(x: width * 0.2, y: height * 0.75))
         path.addQuadCurve(to: CGPoint(x: width * 0.6, y: height * 0.75), controlPoint: CGPoint(x: width * 0.4, y: height * 0.8))
-        // 회전 포인트
         path.addLine(to: CGPoint(x: width * 0.7, y: height * 0.3))
         return path
     }()
@@ -32,6 +33,8 @@ final class CokeView: UIView {
         layer.lineCap = .butt
         return layer
     }()
+    
+    // MARK: - 빨대
     
     lazy var strawPath: UIBezierPath = {
         let path = UIBezierPath()
@@ -49,8 +52,11 @@ final class CokeView: UIView {
         layer.fillColor = UIColor.clear.cgColor
         layer.lineJoin = .round
         layer.lineCap = .round
+//        layer.anchorPoint = CGPoint(x: 1, y: 1)
         return layer
     }()
+    
+    // MARK: - 컵 모양 마스크
     
     lazy var maskPath: UIBezierPath = {
         let path = UIBezierPath()
@@ -70,6 +76,8 @@ final class CokeView: UIView {
         layer.lineCap = .butt
         return layer
     }()
+    
+    // MARK: - 콜라 음료
     
     lazy var cokePath: UIBezierPath = {
         let path = UIBezierPath()
@@ -102,6 +110,8 @@ final class CokeView: UIView {
         self.layer.addSublayer(cokeLayer)
     }
     
+    // MARK: - 애니메이션 메서드
+    
     func drinkCoke() {
         let drinkingCokeAnimation = CABasicAnimation(keyPath: "position.y")
         drinkingCokeAnimation.fromValue = 0
@@ -110,6 +120,7 @@ final class CokeView: UIView {
         drinkingCokeAnimation.fillMode = .forwards
         drinkingCokeAnimation.isRemovedOnCompletion = false
         maskLayer.add(drinkingCokeAnimation, forKey: nil)
+        downStraw()
     }
     
     func fillCoke() {
@@ -120,6 +131,27 @@ final class CokeView: UIView {
         fillingCokeAnimation.fillMode = .forwards
         fillingCokeAnimation.isRemovedOnCompletion = false
         maskLayer.add(fillingCokeAnimation, forKey: nil)
+        upStraw()
+    }
+    
+    func upStraw() {
+        let upStrawAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        upStrawAnimation.fromValue = 0
+        upStrawAnimation.toValue = Float.pi / 8
+        upStrawAnimation.duration = 1
+        upStrawAnimation.fillMode = .forwards
+        upStrawAnimation.isRemovedOnCompletion = false
+        strawLayer.add(upStrawAnimation, forKey: nil)
+    }
+    
+    func downStraw() {
+        let downStrawAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        downStrawAnimation.fromValue = Float.pi / 8
+        downStrawAnimation.toValue = 0
+        downStrawAnimation.duration = 1
+        downStrawAnimation.fillMode = .forwards
+        downStrawAnimation.isRemovedOnCompletion = false
+        strawLayer.add(downStrawAnimation, forKey: nil)
     }
 }
 
