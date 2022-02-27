@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-     let cokeView = CokeView(frame: CGRect(origin: .zero, size: .zero))
+    let cokeView = CokeView(frame: CGRect(origin: .zero, size: .zero))
+    var isCokeFilled: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,9 @@ class ViewController: UIViewController {
             cokeView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             cokeView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(drinkCoke))
+        cokeView.addGestureRecognizer(gesture)
     }
     
     // viewWillAppear 쯤에서 Rect 를 만들어준다.
@@ -37,6 +41,10 @@ class ViewController: UIViewController {
         cokeView.drawCokeLayer()
         cokeView.drawBottleLayer()
     }
-
+    
+    @objc func drinkCoke() {
+        isCokeFilled ? cokeView.drinkCoke() : cokeView.fillCoke()
+        isCokeFilled.toggle()
+    }
 }
 
