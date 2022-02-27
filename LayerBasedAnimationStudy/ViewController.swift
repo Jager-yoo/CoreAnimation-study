@@ -33,8 +33,9 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        cokeView.drawBottleLayer()
         cokeView.drawStrawLayer()
+        cokeView.drawCokeLayer()
+        cokeView.drawBottleLayer()
     }
 
 }
