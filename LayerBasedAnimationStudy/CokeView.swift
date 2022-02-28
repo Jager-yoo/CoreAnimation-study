@@ -8,7 +8,6 @@
 import UIKit
 
 final class CokeView: UIView {
-    
     lazy var width = bounds.width
     lazy var height = bounds.height
     
@@ -38,9 +37,9 @@ final class CokeView: UIView {
     
     lazy var strawPath: UIBezierPath = {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: width * 0.4, y: height * 0.75))
-        path.addLine(to: CGPoint(x: width * 0.66, y: height * 0.29))
-        path.addLine(to: CGPoint(x: width * 0.84, y: height * 0.24))
+        path.move(to: CGPoint(x: width * -0.26, y: height * 0.46))
+        path.addLine(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: width * 0.18, y: height * -0.05))
         return path
     }()
     
@@ -52,6 +51,7 @@ final class CokeView: UIView {
         layer.fillColor = UIColor.clear.cgColor
         layer.lineJoin = .round
         layer.lineCap = .round
+        layer.position = CGPoint(x: width * 0.66, y: height * 0.29)
 //        layer.anchorPoint = CGPoint(x: 1, y: 1)
         return layer
     }()
@@ -137,7 +137,7 @@ final class CokeView: UIView {
     func upStraw() {
         let upStrawAnimation = CABasicAnimation(keyPath: "transform.rotation")
         upStrawAnimation.fromValue = 0
-        upStrawAnimation.toValue = Float.pi / 8
+        upStrawAnimation.toValue = Float.pi / 16
         upStrawAnimation.duration = 1
         upStrawAnimation.fillMode = .forwards
         upStrawAnimation.isRemovedOnCompletion = false
@@ -146,7 +146,7 @@ final class CokeView: UIView {
     
     func downStraw() {
         let downStrawAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        downStrawAnimation.fromValue = Float.pi / 8
+        downStrawAnimation.fromValue = Float.pi / 16
         downStrawAnimation.toValue = 0
         downStrawAnimation.duration = 1
         downStrawAnimation.fillMode = .forwards
