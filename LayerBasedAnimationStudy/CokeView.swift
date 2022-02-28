@@ -37,9 +37,10 @@ final class CokeView: UIView {
     
     lazy var strawPath: UIBezierPath = {
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: width * -0.26, y: height * 0.46))
-        path.addLine(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: width * 0.18, y: height * -0.05))
+        // 기존 좌표에서 이동한 position 만큼 x, y 축에서 빼준다 -> 좌상단으로 그림이 이동함!
+        path.move(to: CGPoint(x: width * (0.4 - 0.66), y: height * (0.75 - 0.29)))
+        path.addLine(to: CGPoint(x: width * (0.66 - 0.66), y: height * (0.29 - 0.29)))
+        path.addLine(to: CGPoint(x: width * (0.84 - 0.66), y: height * (0.24 - 0.29)))
         return path
     }()
     
@@ -51,8 +52,11 @@ final class CokeView: UIView {
         layer.fillColor = UIColor.clear.cgColor
         layer.lineJoin = .round
         layer.lineCap = .round
+        // layer.anchorPoint 위치 == layer.position 위치
+        // layer 에 프레임이 없다보니, anchorPoint 는 변경되지 않았음.
+        // 따라서 layer.position 자체를 빨대의 관절 부분으로 옮김 -> 빨대가 우측 하단으로 멀리 이동함
+        // position 이 우하단으로 이동했으니, path 는 좌상단으로 동일한 x, y축 만큼 옮겨줄 필요가 있었음
         layer.position = CGPoint(x: width * 0.66, y: height * 0.29)
-//        layer.anchorPoint = CGPoint(x: 1, y: 1)
         return layer
     }()
     
